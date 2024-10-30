@@ -1,12 +1,28 @@
 <template>
-  <button class="shop-button">
-    {{ buttonText }} <i class="bi bi-arrow-right"></i>
-  </button>
+  <button type="button" class=".shop-button" @click="clickHandler">{{ buttonText }} &#8594;</button> 
 </template>
-
 <script>
 export default {
-  name: "Button", // Uncomment this if you need to name the component
+  name: " Button",
+  props: {
+      buttonText: {
+          type: String,
+          Required: true,
+      },
+      // tp02
+      clickHandler: {
+          type: Function,
+          required: true,
+      },
+  },
+
+}
+</script>
+<script>
+import Promotion from './Promotion.vue';
+
+export default {
+  // name: "Button", // Uncomment this if you need to name the component
   props: {
     buttonText: {
       type: String,

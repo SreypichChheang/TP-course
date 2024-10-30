@@ -1,8 +1,4 @@
 <template>
-  <!-- <header>
-    <div>This is my first Vue project.</div>
-  </header> -->
-  
   <div class="container">
     <div class="row1">
       <Category
@@ -21,42 +17,115 @@
         :bgImage="promotion.bgImage"
         :bgColorSecond="promotion.bgColorSecond"
         :TittlePromotion="promotion.TittlePromotion"
+        :buttonColor="promotion.buttonColor"
+        :url="promotion.url"
       />
     </div>
   </div>
 </template>
 
-<script setup>
-import Category from './components/Category.vue';
-import Promotion from './components/Promotion.vue';
-import { ref } from 'vue'; // Import ref from Vue
-
+<script>
+import Category from "./components/Category.vue";
+import Promotion from "./components/Promotion.vue";
 // Define reactive data
-const products = ref([
-  { img: '../image/humbergar.png', title: "Cake & Milk", item: '14 Items', bgColor: '#F2FCE4'},
-  { img: '../image/permigranel.png', title: "Peach", item: '17 Items', bgColor: '#FFFCEB' },
-  { img: '../image/kiwi.png', title: "Organic Kiwi", item: '21 Items', bgColor: '#ECFFEC' },
-  { img: '../image/Apple.png', title: "Red Apple", item: '68 Items', bgColor: '#FEEFEA' },
-  { img: '../image/snac.png', title: "Snack", item: '25 Items', bgColor: '#FFF3EB' },
-  { img: '../image/blueberry.png', title: "Black Plum", item: '10 Items', bgColor: '#FFF3FF' },
-  { img: '../image/vegatable.png', title: "Vegetable", item: '65 Items', bgColor: '#F2FCE4' },
-  { img: '../image/headphone.png', title: "Headphone", item: '33 Items', bgColor: '#FFFCEB' },
-  { img: '../image/sack.png', title: "Cake & Milk", item: '54 Items', bgColor: '#F2FCE4' },
-  { img: '../image/orange.png', title: "Orange", item: '63 Items', bgColor: '#FFF3FF' },
-]);
-
-const promotions = ref([
-  { bgImage: '../image/background1.jpg', bgColorSecond: '#F0E8D5', TittlePromotion: "Everyday Fresh & Clean with Our Products" },
-  { bgImage: '../image/background2.png', bgColorSecond: '#F3E8E8', TittlePromotion: "Make your Breakfast Healthy and Easy" },
-  { bgImage: '../image/background3.jpg', bgColorSecond: '#E7EAF3', TittlePromotion: "The Best Organic Products Online" },
-]);
+export default {
+  data() {
+    return {
+      category:[
+        {
+          name: "Cake & Milk",
+          productCount: 14,
+          color: "#FEF4EB",
+          image: "../image/humbergar.png",
+        },
+        {
+          name: "Peach",
+          productCount: 17,
+          color: "#FEFBE8",
+          image: "../image/permigranel.png",
+        },
+        {
+          name: "Oganic Kiwi",
+          productCount: 21,
+          color: "#FFF0E9",
+          image: "../image/blueberry.png",
+        },
+        {
+          name: "Red Apple",
+          productCount: 68,
+          color: "#FEF4EB",
+          image: "../image/Apple.png",
+        },
+        {
+          name: "Snack",
+          productCount: 34,
+          color: "#FEF4EB",
+          image: ".../image/snac.png",
+        },
+        {
+          name: "BLack Plum",
+          productCount: 65,
+          color: "#FEF4EB",
+          image: ".../image/blueberry.png",
+        },
+        {
+          name: "Vegetable",
+          productCount: 65,
+          color: "#FEF4EB",
+          image: ".../image/vegetable.png",
+        },
+        {
+          name: "HeadPhone",
+          productCount: 54,
+          color: "#FEF4EB",
+          image: ".../image/headphone.png",
+        },
+        {
+          name: "Cake &Milk",
+          productCount: 54,
+          color: "#FEF4EB",
+          image: ".../image/snack.png",
+        },
+        {
+          name: "Organce",
+          productCount: 63,
+          color: "#FEF4EB",
+          image: ".../image/orange.png",
+        }
+      ],
+      promotions: [
+        {
+          bgImage: "../image/background1.jpg",
+          bgColor: "#F0E8D5",
+          TittlePromotion: "Everyday Fresh & Clean with Our Products",
+          buttonColor: "#42B678",
+          url: "/promotions/1",
+        },
+        {
+          bgImage: "../image/background2.png",
+          bgColor: "#F3E8E8",
+          TittlePromotion: "Make your Breakfast Healthy and Easy",
+          buttonColor: "#42B678",
+          url: "/promotions/2",
+        },
+        {
+          bgImage: "../image/background3.jpg",
+          bgColor: "#E7EAF3",
+          TittlePromotion: "The Best Organic Products Online",
+          buttonColor: "#42B678",
+          url: "/promotions/3",
+        }
+      ]
+    };
+  },
+};
 </script>
 
 <style scoped>
 .container {
   width: 75rem;
   height: 35rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 1rem;
 }
 
@@ -66,8 +135,7 @@ const promotions = ref([
   padding: 7px;
   display: flex;
   justify-content: space-between;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .row2 {
@@ -75,6 +143,6 @@ const promotions = ref([
   height: 69%;
   display: flex;
   justify-content: space-between;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 </style>
