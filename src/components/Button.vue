@@ -1,43 +1,29 @@
 <template>
-  <button type="button" class=".shop-button" @click="clickHandler">{{ buttonText }} &#8594;</button> 
+  <button type="button" class="shop-button" @click="clickHandler">
+    {{ buttonText }} &#8594;
+  </button>
 </template>
 <script>
 export default {
-  name: " Button",
-  props: {
-      buttonText: {
-          type: String,
-          Required: true,
-      },
-      // tp02
-      clickHandler: {
-          type: Function,
-          required: true,
-      },
-  },
-
-}
-</script>
-<script>
-import Promotion from './Promotion.vue';
-
-export default {
-  // name: "Button", // Uncomment this if you need to name the component
+  name: "Button", // Uncomment this if you need to name the component
   props: {
     buttonText: {
       type: String,
       required: true, // Use lowercase 'required'
     },
+    clickHandler: {
+      type: Function,
+      required: true,
+    },
   },
-}
+};
 </script>
-
 <style scoped>
 .shop-button {
   border-radius: 5px;
   width: 100px;
   height: 30px;
-  background-color: #3BB77E;
+  background-color: #3bb77e;
   font-size: 13px;
   color: white;
   margin-top: 45%;
@@ -54,6 +40,6 @@ export default {
 }
 
 .shop-button:hover {
-  background-color: #FDC040;
+  background-color: #fdc040;
 }
 </style>
