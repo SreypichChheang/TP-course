@@ -19,27 +19,31 @@ export default {
 };
 </script>
 <style scoped>
+
+
 .shop-button {
+  background-color: rgb(30, 168, 99);
   border-radius: 5px;
-  width: 100px;
-  height: 30px;
-  background-color: #3bb77e;
-  font-size: 13px;
-  color: white;
-  margin-top: 45%;
+  width: 25%;
+  height: auto;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
   position: absolute;
+  bottom: 10%; /* Adjust to position within the picture */
+  left: 10%; /* Adjust to position near the right border */
   border: none;
-  margin-left: 10%;
-  display: flex; /* Use flex to align items */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px; /* Adjust padding for button size */
 }
 
 .shop-button i {
-  margin-left: 5px; /* Add space between text and icon */
+  margin-left: 5%;
 }
 
 .shop-button:hover {
   background-color: #fdc040;
 }
+
 </style>

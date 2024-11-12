@@ -2,97 +2,89 @@
   <div class="container">
     <div class="row1">
       <Category
-        v-for="(category, index) in products"
+        v-for="(category, index) in categories"
         :key="index"
-        :image="category.imgage"
-        :title="category.title"
-        :items="category.item"
-        :bgColor="category.bgColor"
+        :image="category.image"
+        :name="category.name"
+        :productCount="category.productCount"
+        :color="category.color" 
       />
     </div>
     <div class="row2">
       <Promotion
-        v-for="(promotion, second) in promotions"
-        :key="second"
-        :image="promotion.image"
-        :color="promotion.color"
-        :tiltle="promotion.title"
-        :url="promotion.url"
-        :buttonColor="promotion.buttonColor"
-      />
+  v-for="(promo, second) in promotions"
+  :key="second"
+  :image="promo.image"
+  :color="promo.color"
+  :title="promo.title"
+  :url="promo.url"
+  :buttonColor="promo.buttonColor"
+/>
+
     </div>
   </div>
 </template>
 
 <script>
-import category from "./components/Category.vue";
-import promotion from "./components/Promotion.vue";
+import Category from "./components/Category.vue";
+import Promotion from "./components/Promotion.vue";
 import axios from "axios";
-
 export default {
   name: "App",
   components: {
-    category,
-    promotion,
+    Category,
+    Promotion,
   },
   data() {
     return {
-      // tp02
       categories: [],
       promotions: [],
     };
   },
-  // tp02
-  mounted() {
-    axios
-      .get("http://localhost:3000/api/categories")
-      .then((response) => {
-        this.category = response.data;
-      })
-      .catch((error) => {
-        console.error(
-          "Error fetching categories:",
-          error.response ? error.response.data : error.message
-        );
-      });
-
-    axios
-      .get("http://localhost:3000/api/promotions")
-      .then((response) => {
-        this.promotion = response.data;
-      })
-      .catch((error) => {
-        console.error(
-          "Error fetching promotions:",
-          error.response ? error.response.data : error.message
-        );
-      });
+  methods: {
+    async getCategories() {
+      const responseCategories = await axios.get('http://localhost:3000/api/categories');
+      this.categories = responseCategories.data;
+    },
+    async getPromotion() {
+      try {
+        const responsePromotion = await axios.get('http://localhost:3000/api/promotions');
+        console.log(responsePromotion.data); // Log the response
+        this.promotions = responsePromotion.data;
+      } catch (error) {
+        console.error("Error fetching promotions:", error); // Catch any error
+      }
+    }
   },
+  mounted() {
+    this.getCategories();
+    this.getPromotion();
+  }
 };
 </script>
 
-<style scoped>
-.container {
-  width: 75rem;
-  height: 35rem;
-  background-color: white;
-  padding: 1rem;
-}
 
-.row1 {
-  width: 100%;
-  height: 31%;
-  padding: 7px;
-  display: flex;
-  justify-content: space-between;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.row2 {
-  width: 100%;
-  height: 69%;
-  display: flex;
-  justify-content: space-between;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+<style>
+  .container {
+    width: 100rem;
+    height: 35rem;
+    background-color: white;
+    padding: 2rem;
+  }
+  .row1 {
+    width: 100%;
+    height: 31%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  .row2 {
+    margin-top: 5%;
+    gap: 5px;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
