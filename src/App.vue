@@ -7,7 +7,7 @@
         :image="category.image"
         :name="category.name"
         :productCount="category.productCount"
-        :color="category.color" 
+        :color="category.color"
       />
     </div>
     <div class="row2">
@@ -25,46 +25,54 @@
 </template>
 
 <script>
-import Category from "./components/Category.vue";
-import Promotion from "./components/Promotion.vue";
+import { onMounted } from 'vue';
+import Category from './components/Category.vue';
+import Promotion from './components/Promotion.vue';
 import { useProductStore } from './stores/productStore';
 
 export default {
   name: 'App',
   components: {
     Category,
-    Promotion
+    Promotion,
   },
-
+  
   setup() {
     const productStore = useProductStore();
-    productStore.initializeData();
-    return { productStore };
-  }
+
+    onMounted(async () => {
+      await productStore.fetchProducts();
+      console.log("Products:", productStore.products);
+      await productStore.fetchGroups();
+      console.log("Groups:", productStore.groups);
+      await productStore.fetchCategories();
+      console.log("Categories:", productStore.categories);
+      await productStore.fetchPromotions();
+      console.log("Promotions:", productStore.promotions);
+    });
+
+    return {
+      productStore,
+    };
+  },
 };
 </script>
 
 <style>
-  .container {
-    width: 100rem;
-    height: 35rem;
-    background-color: white;
-    padding: 2rem;
-  }
-  .row1 {
-    width: 100%;
-    height: 31%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-  }
-  .row2 {
-    margin-top: 5%;
-    gap: 5px;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    justify-content: space-between;
-  }
+.container {
+  width: 100%;
+  background-color: white;
+  padding: 2rem;
+}
+.row1 {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+.row2 {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
 </style>
