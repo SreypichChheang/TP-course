@@ -35,19 +35,19 @@ export default {
 
 <style scoped>
 .Promo {
-  width: 40%;
-  height: 70%;
-  margin-top: 2px;
-  margin-right: 20px;
-  border-radius: 20px;
-  position: relative;
+  width: 30%;
+    height: 50%;
+    margin-top: 2px;
+    border-radius: 20px;
+    position: relative;
 }
 .Promo img {
-  width: 100%;
-  height: 90%;
-  object-fit: contain;
-  position: absolute;
-  bottom: 0;
+  width: 80%;
+    height: 75%;
+    object-fit: contain;
+    position: absolute;
+    left: 30%;
+    bottom: 0;
 }
 
 
