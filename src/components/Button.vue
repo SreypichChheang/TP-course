@@ -28,13 +28,15 @@ export default {
     font-size: 13px;
     color: white;
     margin-top: 35%;
+    margin:10px;
     position: absolute;
     border: none;
+    top:150px;
    
 }
 
 .shop-button i {
-  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .shop-button:hover {
