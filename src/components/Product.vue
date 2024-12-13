@@ -29,19 +29,17 @@
         </p>
         <p v-else>${{ product.price.toFixed(2) }}</p>
 
-        <!-- Quantity Selector and Add to Cart Button -->
+        <!-- Add to Cart Button -->
         <div class="quantity-add-btn-container">
           <button v-if="!product.addedToCart" @click="toggleAddToCart(product)" class="add-btn" :disabled="product.instock <= 0">
-            Add
+            Add to Cart
           </button>
 
-          <div v-if="product.addedToCart" class="quantity-selector">
-            <button type="button" @click="decrement(product)" class="quantity-btn">-</button>
-            <input type="number" v-model.number="product.quantity" :min="1" :max="product.instock" class="quantity-input" />
-            <button type="button" @click="increment(product)" class="quantity-btn">+</button>
-          </div>
+          <!-- Button that shows when the product is already added -->
+          <button v-else class="added-to-cart-btn" :disabled="true">
+            Added to Cart
+          </button>
         </div>
-
       </div>
     </div>
   </div>
@@ -53,7 +51,7 @@ import { useProductStore } from "@/stores/productStore";
 
 export default {
   name: "ProductList",
-  props:[
+  props: [
     "product"
   ],
   computed: {
@@ -67,22 +65,7 @@ export default {
     },
 
     toggleAddToCart(product) {
-      product.addedToCart = true;
-      product.quantity = 1; // Reset to 1 after adding to cart
-    },
-
-    // Increase quantity
-    increment(product) {
-      if (product.quantity < product.instock) {
-        product.quantity++;
-      }
-    },
-
-    // Decrease quantity
-    decrement(product) {
-      if (product.quantity > 1) {
-        product.quantity--;
-      }
+      product.addedToCart = true; // Mark as added to cart
     },
   },
 };
@@ -191,35 +174,15 @@ export default {
   cursor: not-allowed;
 }
 
-/* Quantity Selector */
-.quantity-selector {
-  display: flex;
-  justify-content: end;
-}
-
-.quantity-btn {
-  background: transparent;
+.added-to-cart-btn {
+  display: block;
+  width: 50%;
+  padding: 8px;
+  background: #28a745;
+  color: white;
   border: none;
-  outline: none;
-  font-size: 1.2rem;
-  color: #118116;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-}
-
-.quantity-input {
-  width: 50px;
-  text-align: center;
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin: 0 10px;
-  font-size: 1rem;
   border-radius: 5px;
-}
-
-.quantity-btn:disabled {
-  color: #ccc;
   cursor: not-allowed;
+  font-size: 0.9rem;
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
-  <div class="card" :style="{ backgroundColor: color }">
+  <div 
+    class="card" 
+    :style="{ backgroundColor: color }" 
+    @click="handleClick"
+  >
     <div class="card-img">
       <img :src="image" :alt="name" />
     </div>
@@ -8,6 +12,7 @@
       <p>{{ productCount }} items</p>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -18,7 +23,17 @@ export default {
     name: String,
     productCount: Number,
     color: String,  // Color is passed as a prop
+    categoryId: String // Assuming the categoryId is passed as a prop
   },
+  methods: {
+    handleClick() {
+      // Handle the click action and navigate to the category details page
+      console.log(`Clicked on ${this.name}`);
+      
+      // Use Vue Router to navigate to the category route with categoryId
+      this.$router.push({ name: 'category', params: { categoryId: this.categoryId } });
+    }
+  }
 };
 </script>
 
@@ -34,6 +49,13 @@ export default {
   justify-content: space-between;
   padding: 5px;
   gap: 10px; /* Adds a gap between the image and the text */
+  cursor: pointer; /* Make the card appear clickable */
+  transition: transform 0.2s, box-shadow 0.2s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight upward movement on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
 }
 
 .card-img {
@@ -50,7 +72,6 @@ export default {
 }
 
 .card-text {
-  
   width: 100%;
   height: 40%; /* Make the text take up the remaining space */
   display: flex;
@@ -66,8 +87,6 @@ export default {
   font-weight: bold;
   margin: 0;
   color: #263d61;/* Set font color */
-  
-
 }
 
 .card-text p {
@@ -75,6 +94,5 @@ export default {
   margin: 5px 0 0;
   opacity: 0.8;
   color: #8c9096;/* Set font color */
-
 }
 </style>

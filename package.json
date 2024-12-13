@@ -10,6 +10,10 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "axios": "^1.7.7",
     "e-commerce": "file:",
     "pinia": "^2.2.6",

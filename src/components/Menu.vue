@@ -8,7 +8,18 @@
           @click="selectMenuItem(item)"
         >
           {{ item }}
-        </li>
+        </li><template>
+  <footer>
+    <h1>HELLO</h1>
+  </footer>
+</template>
+<!-- 
+<script>
+export default {
+  name: 'Footer', // Capitalized for consistency with Vue conventions
+}; -->
+<!-- </script> -->
+
       </ul>
     </nav>
 </template>
