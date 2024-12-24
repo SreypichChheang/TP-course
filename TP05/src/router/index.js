@@ -1,35 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+import section from '@/components/section.vue'
+import page from '@/components/page.vue'
 
-// Import your page components
-import Page1 from '../components/page1.vue';
-import Page2 from '../components/page2.vue';
-import Page3 from '../components/page3.vue';
-
-const routes = [
-  {
-    path: '/page1',
-    name: 'Page1',
-    component: Page1,
-  },
-  {
-    path: '/page2',
-    name: 'Page2',
-    component: Page2,
-  },
-  {
-    path: '/page3',
-    name: 'Page3',
-    component: Page3,
-  },
-  {
-    path: '/',
-    redirect: '/page1', // Default route redirects to Page1
-  },
-];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/page',
+      redirect: '/page/1'
+    },
+    {
+      path: '/page/:nb?',
+      name: 'page',
+      component: page,
+      children: [
+        {
+          path: 'section/:id',
+          name: 'section',
+          component: section
+        },
+      ]
+    },
+  ],
+})
 
-export default router;
+export default router

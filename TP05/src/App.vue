@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Header from './components/header.vue';
-import Menu from './components/menu.vue';
-import Footer from './components/footer.vue';
+import Header from './views/header.vue'; // Corrected "form" to "from"
+import Footer from './views/footer.vue'; // Corrected "form" to "from"
+import Menu from './views/menu.vue';     // Corrected "form" to "from"
 
 export default {
   components: { Header, Menu, Footer },
@@ -25,17 +25,17 @@ export default {
 #app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* Ensures the app spans the entire viewport height */
 }
 
 .layout {
   display: flex;
-  flex: 1;
+  flex: 1; /* Allows the layout to take up all available vertical space */
 }
 
 .content {
-  flex: 1;
+  flex: 1; /* Ensures the content area expands to fill available space */
   padding: 20px;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #ddd; /* Visual separation from the menu */
 }
 </style>
